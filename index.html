@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app</title>
+  </head>
+  <body class="cool">
+    <div id="app">
+      <h1 class="hero">Meme Generator</h1>
+      <div class="main">
+        <button class="filterbutton" onclick="showAll()">Show All Memes</button>
+        <button class="filterbutton" onclick="filter('funny')">
+          Show Funny Memes
+        </button>
+        <button class="filterbutton" onclick="filter('unfunny')">
+          Show Unfunny Memes
+        </button>
+        <button class="btn">Change to Light</button>
+<form id="memeForm">
+        <input type="text" id="memeName" placeholder="Meme name" required><br>
+        <input type="text" id="memeDescription" placeholder="Meme description" required><br>
+        <input type="text" id="memeImage" placeholder="Image URL" required><br>
+        <select id="memeTag" required>
+         <option value="">Select tag</option>
+         <option value="funny">Funny</option>
+         <option value="unfunny">Unfunny</option>
+  </select><br><br>
+  <button type="submit">Add Meme</button>
+</form>
+        <div class="container">
+    <script>
+      function filter(tag) {
+        const select = document.querySelectorAll(".card");
+        select.forEach((meme) => {
+          const memetag = meme.getAttribute("data-type");
+          if (memetag === tag) {
+            meme.style.display = "";
+          } else {
+            meme.style.display = "none";
+          }
+        });
+      }
+      function showAll() {
+        const filter = document.querySelectorAll(".card");
+        filter.forEach((meme) => {
+          meme.style.display = "";
+        });
+      }
+      function loadImage() {
+        let url = document.getElementById("imageUrl").value;
+        document.getElementById("displayImage").src = url;
+      }
+    </script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
